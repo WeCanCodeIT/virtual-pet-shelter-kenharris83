@@ -3,12 +3,64 @@
  */
 package virtual.pet.shelter;
 
-public class App {
-    public String getGreeting() {
-        return "Woof!";
-    }
+import java.util.Scanner;
 
+import virtual.VirtualPet;
+
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        int select;
+
+        Scanner userInput = new Scanner(System.in);
+        System.out.println( "Have you decided on a name for your pet?");
+        String name = userInput.nextLine();
+        
+        VirtualPet pet = new VirtualPet(name, 5, 5, 5);
+
+        System.out.println("Hello, and welcome to Lands Between pet shelter. Thank you for volunteering to care for the dogs today.");
+        System.out.println("While you are here, you will be responsible for admitting and check out dogs as well as feeding, providing water, and playing games with the dogs.");
+        System.out.println("We are very short staffed so we really appreciate all the help we can get.");
+
+        do{
+            System.out.println("What action will you take to care for the dogs?");
+            System.out.println("1. Feed them some food." );
+            System.out.println("2. Give some water." );
+            System.out.println("3. Play games with the dogs " );
+            System.out.println("4. Exit" );
+
+            select = Integer.parseInt(userInput.nextLine());
+
+            switch (select) {
+                case 1:
+                    pet.feedPet();
+                    System.out.println(pet.getName()+ " has been fed");
+                    System.out.println(pet.getName()+ " has new stats ");
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                    System.out.println(pet.getName()+ "hunger is: " +pet.getHunger());
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                    break;
+                case 2:
+                    pet.waterPet();
+                    System.out.println("You gave water to " +name);
+                    System.out.println(pet.getName()+ " has new stats ");
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                    System.out.println(pet.getName()+ "hunger is: " +pet.getHunger());
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                case 3:
+                    pet.playWithPet();
+                    System.out.println("You played with " +name);
+                    System.out.println(pet.getName()+ " has new stats ");
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                    System.out.println(pet.getName()+ "hunger is: " +pet.getHunger());
+                    System.out.println(pet.getName()+ "energy is: " +pet.getEnergy());
+                default:
+                    break;
+            }
+            pet.tick();
+        }while(select != 4);
+
+
     }
+    
 }
+
