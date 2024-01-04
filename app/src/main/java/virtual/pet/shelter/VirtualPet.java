@@ -1,19 +1,19 @@
-package virtual;
+package virtual.pet.shelter;
+
+import java.util.Map.Entry;
 
 public class VirtualPet {
 private String name;
-private String dogBreed;
 private int energy;
 private int hunger;
 private int thirst;
 
 
-public VirtualPet(String name, String dogBreed, int energy, int hunger, int thirst) {
+public VirtualPet(String name) {
     this.name = name;
-    this.dogBreed = dogBreed;
-    this.energy = energy;
-    this.hunger = hunger;
-    this.thirst = thirst;
+    this.energy = 5;
+    this.hunger = 5;
+    this.thirst = 5;
 }
 
 public String getName() {
@@ -48,17 +48,6 @@ public void setThirst(int thirst) {
     this.thirst = thirst;
 }
 
-public String getDogBreed() {
-    return dogBreed;
-}
-
-
-public void tick(){
-    this.hunger -= 1;
-    this.thirst -= 1;
-    this.energy -= 1;
-    }
-
 public void petStats(){
     System.out.println("Name: " +this.name);
     System.out.println("Hunger level: " +this.hunger);
@@ -85,5 +74,7 @@ public void playWithPet(){
     this.thirst +=2;
 }
 
-
+public static Entry<String, VirtualPet>[] entrySet() {
+    return null;
+}
 }
