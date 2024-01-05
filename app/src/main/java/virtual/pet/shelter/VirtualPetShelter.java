@@ -35,12 +35,10 @@ public class VirtualPetShelter {
     }
 
     public void displayDogs(){
-        if(!VirtualPet.isEmpty()){
-            System.out.println("\t  Dogs available for Adoption");
-
-            for(Map.Entry<String, VirtualPet> entry : VirtualPet.entrySet()){
+        System.out.println("\t  Dogs available for Adoption");
+            for(VirtualPet pet : petShelter.values()){
                 System.out.println("Name: "+ pet.getName() + " Energy:"  +pet.getEnergy()+ " Hunger:" +pet.getHunger()+ " Thirst: " +pet.getThirst());
             }
         }
     }
-}
+

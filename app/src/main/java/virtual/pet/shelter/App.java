@@ -11,21 +11,23 @@ public class App {
         VirtualPetShelter pet = new VirtualPetShelter();
         Scanner userInput = new Scanner(System.in);
         int select;
-        String name = userInput.nextLine();
+        
         
         System.out.println("Hello, and welcome to The Land's Between Pet Shelter. Thank you for volunteering to care for the dogs today.");
         System.out.println("While you are here, you will be responsible for admitting and adopting dogs as well as feeding, providing water, and playing games with the dogs.");
         System.out.println("We are very short staffed today. We really appreciate all the help we can get.");
 
         do{
-            select = Integer.parseInt(userInput.nextLine());
-            pet.displayDogs();
-
             menu();
 
+            select = Integer.parseInt(userInput.nextLine());
+            pet.displayDogs();
+            
             switch (select) {
                 case 1:
-                    admitPet();
+                    System.out.println("Type in the name of the pet you would like to admit:");
+                    String name = userInput.nextLine();
+                    pet.admitPet(name);
                     break;
                 case 2:
                     pet.feedPets();
@@ -35,9 +37,12 @@ public class App {
                     break;
                 case 4:
                     pet.playWithPets();
-
+                    break;
                 case 5:
-                    pet.adoptPet(name); 
+                    System.out.println("Type in the name of the pet you would like to adopt:");
+                    String adoptingPet = userInput.nextLine();
+                    pet.adoptPet(adoptingPet);
+                    break;
                 case 6:
                 System.out.println("Thank you for your help today.  We hope to see you again!");
                 System.exit(0);    
@@ -45,7 +50,8 @@ public class App {
                     break;
             }
         }while(select != 6);
-        scanner.close();
+        
+        userInput.close();
     }
     
     public static void menu(){
@@ -56,14 +62,12 @@ public class App {
             System.out.println("4. Play games with the dogs ");
             System.out.println("5. Release dog to adopted owners");
             System.out.println("6. Exit" );
+            System.out.println("");
     }
 
-    public static void adoptPet(String name, Scanner scanner){
-        System.out.println("Which dog are you interested in adopting?");
-        scanner.next();
     }
 
 
 
-}
+
 
